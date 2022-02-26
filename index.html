@@ -17,6 +17,7 @@
 </head>
 
 <body>
+  <audio src="bgsound.mp3" id="bg-sound" loop="true" autoplay="true"></audio>
   <nav>
     <div class="menu-icon">
       <span class="fas fa-bars"></span>
@@ -43,42 +44,42 @@
   <div class="content">
     <div class="bar"></div>
     <div class="video-list">
-    <a href="#" class="video vid1">
-      <div class="video-title">
-        Theme Intro | A New Beginning | Spacify
-      </div>
-      <img class="thumb" src="https://img.youtube.com/vi/Bd4vNUSYHQc/maxresdefault.jpg" alt="">
-    </a>
-    <a href="#" class="video vid2">
-      <div class="video-title">
-        Our Solar System and Our Planets | Spacify
-      </div>
-      <img class="thumb" src="https://img.youtube.com/vi/EtUEy8HVtZg/maxresdefault.jpg" alt="">
-    </a>
-    <a href="#" class="video vid3">
-      <div class="video-title">
-        All you need to know about Exoplanets | Spacify
-      </div>
-      <img class="thumb" src="https://img.youtube.com/vi/k3GruoZlqFE/maxresdefault.jpg" alt="">
-    </a>
+      <a href="#" class="video vid1">
+        <div class="video-title">
+          Theme Intro | A New Beginning | Spacify
+        </div>
+        <img class="thumb" src="https://img.youtube.com/vi/Bd4vNUSYHQc/maxresdefault.jpg" alt="">
+      </a>
+      <a href="#" class="video vid2">
+        <div class="video-title">
+          Our Solar System and Our Planets | Spacify
+        </div>
+        <img class="thumb" src="https://img.youtube.com/vi/EtUEy8HVtZg/maxresdefault.jpg" alt="">
+      </a>
+      <a href="#" class="video vid3">
+        <div class="video-title">
+          All you need to know about Exoplanets | Spacify
+        </div>
+        <img class="thumb" src="https://img.youtube.com/vi/k3GruoZlqFE/maxresdefault.jpg" alt="">
+      </a>
     </div>
     <div class="video-list">
-    <a href="#" class="video vid4">
-      <div class="video-title">
-        Dimensions: What are they? | Part I | Explained by Spacify
-      </div>
-      <img class="thumb" src="https://img.youtube.com/vi/Y6pQHap2GxM/maxresdefault.jpg" alt="">
-    </a><a href="#" class="video vid4">
-      <div class="video-title">
-        Dimensions: What are they? | Part II | Explained by Spacify
-      </div>
-      <img class="thumb" src="https://img.youtube.com/vi/EDebJxWMduo/maxresdefault.jpg" alt="">
-    </a><a href="#" class="video vid4">
-      <div class="video-title">
-        Happy 75th Independence Day | Spacify
-      </div>
-      <img class="thumb" src="https://i.ytimg.com/vi/nrcycqoj9zs/hqdefault.jpg?sqp=-oaymwEcCNACELwBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLDKdOGMVbnnH-YzkpfEJbB67kMjVw" alt="">
-    </a>
+      <a href="#" class="video vid4">
+        <div class="video-title">
+          Dimensions: What are they? | Part I | Explained by Spacify
+        </div>
+        <img class="thumb" src="https://img.youtube.com/vi/Y6pQHap2GxM/maxresdefault.jpg" alt="">
+      </a><a href="#" class="video vid4">
+        <div class="video-title">
+          Dimensions: What are they? | Part II | Explained by Spacify
+        </div>
+        <img class="thumb" src="https://img.youtube.com/vi/EDebJxWMduo/maxresdefault.jpg" alt="">
+      </a><a href="#" class="video vid4">
+        <div class="video-title">
+          Happy 75th Independence Day | Spacify
+        </div>
+        <img class="thumb" src="https://i.ytimg.com/vi/nrcycqoj9zs/hqdefault.jpg?sqp=-oaymwEcCNACELwBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLDKdOGMVbnnH-YzkpfEJbB67kMjVw" alt="">
+      </a>
     </div>
   </div>
   <script type="text/javascript" charset="utf-8">
@@ -89,6 +90,7 @@
       items.classList.add("active");
       menuBtn.classList.add("hide");
       cancelBtn.classList.add("show");
+      document.getElementById("bg-sound").play();
     }
     cancelBtn.onclick = () => {
       items.classList.remove("active");
@@ -104,7 +106,10 @@
         content.classList.remove("sticky")
       }
     }
-    window.addEventListener('scroll', onScroll)
+    window.addEventListener('scroll', onScroll);
+    document.onclick = function() {
+      document.getElementById("bg-sound").play();
+    }
   </script>
 </body>
 
