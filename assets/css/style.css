@@ -8,14 +8,29 @@
   scroll-behavior: smooth;
 }
 
-body,html {
+body,
+html {
   background: #16181b;
   scroll-behavior: smooth;
   top: 0;
   left: 0;
   margin: 0;
-  padding:0;
+  padding: 0;
 }
+
+.page {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: transparent;
+}
+
+body.disabledScroll {
+  overflow: hidden;
+}
+
 
 nav {
   position: fixed;
@@ -101,7 +116,7 @@ nav .nav-items {
   text-align: center;
   background: #000;
   display: inline-block;
-  transition: left 0.3s ease;
+  transition: left 0.4s ease;
 }
 
 nav .nav-items .centre {
@@ -115,6 +130,7 @@ nav .nav-items .centre {
 
 nav .nav-items.active {
   left: 0px;
+
 }
 
 nav .nav-items li {
@@ -136,7 +152,7 @@ nav .menu-icon {
   right: 10px;
   top: 0px;
   font-size: 22px;
-  transition: 0.4s ease-in-out;
+  transition: 0.4s ease;
   opacity: 1;
 }
 
@@ -169,7 +185,7 @@ nav .cancel-icon.show {
   padding: 15px;
   border-top-right-radius: 14px;
   border-top-left-radius: 14px;
-  transition: 0.5s ease-in-out;
+  transition: 0.4s ease;
   padding-top: 60px;
   z-index: 501;
 }
@@ -202,47 +218,50 @@ img {
   height: 100%;
   width: 100%;
   display: flex;
-  justify-content: center;
-  align-items: center;
   transition: .5s ease-in-out;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.loader img {
+  width: 60%;
+  max-width: 140px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 .progress {
-  position: absolute;
-  bottom: 30%;
+  position: relative;
+  top: 100px;
   width: 100%;
-  max-width: 260px;
-  height: 16px;
-  border-radius: 8px;
+  max-width: 150px;
+  height: 5px;
+  border-radius: 1px;
   overflow: hidden;
   background: rgba(255, 255, 255, 0.15);
-  padding: 4px;
+  padding: 1.25px;
   justify-content: flex-start;
   align-items: center;
   display: flex;
 }
 
 .progress-bar {
-  animation: load 2.8s normal forwards;
-  box-shadow: 0 10px 40px -10px #fff;
+  content: "";
+  width: 20%;
+  max-width: 80px;
+  height: 3px;
+  position: absolute;
+  left: -34px;
   background: #f3f3f3;
-  display: block;
-  height: 100%;
-  width: 0;
-  border-radius: 8px;
+  animation: loadBar 1.5s infinite ease;
 }
 
-@keyframes load {
-  0% {
-    width: 0;
-  }
-
-  90% {
-    width: 82%;
-  }
-
-  100% {
-    width: 100%;
+@keyframes loadBar {
+  50% {
+    left: 100px;
   }
 }
 
@@ -292,11 +311,12 @@ img {
   padding: 20px;
   padding-left: 10px;
   padding-right: 10px;
-  font-size: 20px;
+  font-size: 16.5px;
+  font-family: 'Poppins';
 }
 
 .video {
-  border-radius: 15px;
+  border-radius: 12px;
   border: 1px solid #222;
   background: #111;
   padding: 3px;
@@ -360,7 +380,7 @@ a {
     top: 30px;
     left: 50%;
     transform: translateX(-50%);
-    width: calc(100% - 30px);
+    width: calc(95% - 30px);
     height: auto;
     margin-bottom: 50px;
   }

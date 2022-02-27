@@ -15,11 +15,13 @@
   <script src="https://code.jquery.com/jquery-3.6.0.slim.min.js" integrity="sha256-u7e5khyithlIdTpu22PHhENmPcRdFiHRjhAuHcs05RI=" crossorigin="anonymous"></script>
 </head>
 
-<body onload="start()">
+<body class="disabledScroll" onload="start()">
   <div class="loader">
     <div class="progress">
       <span class="progress-bar" style="width: 75%"></span>
     </div>
+    <img src="assets/spacify.png" alt="">
+
   </div>
   <audio src="bgsound.mp3" id="bg-sound" loop="true" autoplay="true"></audio>
   <nav>
@@ -88,12 +90,18 @@
   </div>
   <script type="text/javascript" charset="utf-8">
     var loader = document.querySelector('.loader'),
+      page = document.querySelector('.page'),
+      header = document.querySelector('.header'),
       bar = document.querySelector('.progress'),
-      counter = document.querySelector('.progress-bar')
+      counter = document.querySelector('.progress-bar');
+    const content = document.querySelector('.content'),
+      body = document.querySelector('body');
+
 
     function start() {
       setTimeout(function() {
         loader.classList.add("remove");
+        body.classList.remove("disabledScroll");
       }, 2875);
     }
 
@@ -108,15 +116,16 @@
       items.classList.add("active");
       menuBtn.classList.add("hide");
       cancelBtn.classList.add("show");
+      body.classList.add("disabledScroll");
       document.querySelector(".logo img").classList.add('hide');
     }
     cancelBtn.onclick = () => {
       items.classList.remove("active");
       menuBtn.classList.remove("hide");
       cancelBtn.classList.remove("show");
+      body.classList.remove("disabledScroll");
       document.querySelector(".logo img").classList.remove('hide');
     }
-    const content = document.querySelector('.content')
     const onScroll = () => {
       const scroll = document.documentElement.scrollTop;
       if (scroll > 190) {
