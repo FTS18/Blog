@@ -8,9 +8,13 @@
   scroll-behavior: smooth;
 }
 
-body {
-  background: #090909;
+body,html {
+  background: #16181b;
   scroll-behavior: smooth;
+  top: 0;
+  left: 0;
+  margin: 0;
+  padding:0;
 }
 
 nav {
@@ -27,20 +31,23 @@ nav {
   align-items: center;
   justify-content: space-between;
   height: 70px;
-  padding: 0 100px;
-  z-index: 100000;
+  padding: 0px;
+  z-index: 1000;
 }
 
 nav .logo img {
-  width: 70px;
-  height: 70px;
+  width: 60px;
+  height: 60px;
   left: 10px;
+  top: 50%;
+  position: relative;
+  display: block;
+  opacity: 1;
 }
 
-nav .nav-items {
-  display: flex;
-  flex: 1;
-  padding: 0 0 0 40px;
+nav .logo img.hide {
+  display: none;
+  opacity: 0;
 }
 
 nav .nav-items li {
@@ -63,8 +70,8 @@ nav .menu-icon,
 nav .cancel-icon {
   width: 60px;
   text-align: center;
-  font-size: 18px;
-  color: #f2f2f2;
+  font-size: 25px;
+  color: #fff;
   cursor: pointer;
   display: none;
 }
@@ -76,98 +83,79 @@ nav .cancel-icon {
 
 nav .cancel-icon {
   position: absolute;
-  right: -21px;
-  top: 27px;
+  right: -15px;
+  top: 25px;
   color: #ff0042;
   font-size: 25px;
   transition: 0.4s ease-in-out;
 }
 
-@media (max-width: 1245px) {
-  nav {
-    padding: 0 50px;
-  }
+nav .nav-items {
+  position: fixed;
+  z-index: 99;
+  top: 70px;
+  width: 100%;
+  left: -100%;
+  height: 100%;
+  padding: 10px 50px 0 50px;
+  text-align: center;
+  background: #000;
+  display: inline-block;
+  transition: left 0.3s ease;
 }
 
-@media (max-width: 1140px) {
-  nav {
-    padding: 0px;
-  }
+nav .nav-items .centre {
+  position: absolute;
+  width: 100%;
+  height: auto;
+  top: 45%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
 
-  nav .logo {
-    text-align: left;
-    position: relative;
-    top: 0;
-    left: 10px;
-  }
+nav .nav-items.active {
+  left: 0px;
+}
 
-  nav .nav-items {
-    position: fixed;
-    z-index: 99;
-    top: 70px;
-    width: 100%;
-    left: -100%;
-    height: 100%;
-    padding: 10px 50px 0 50px;
-    text-align: center;
-    background: #000;
-    display: inline-block;
-    transition: left 0.3s ease;
-  }
+nav .nav-items li {
+  line-height: 35px;
+  margin: 30px 0;
+}
 
-  .nav-items .centre {
-    position: absolute;
-    width: 100%;
-    height: auto;
-    top: 20%;
-    left: 0%;
-    transform: translate(-50, -50%);
-  }
+nav .nav-items li a {
+  font-size: 27px;
+  text-transform: uppercase;
+  font-weight: 900;
+  letter-spacing: 1px;
+  font-family: 'Poppins', sans-serif;
+}
 
-  nav .nav-items.active {
-    left: 0px;
-  }
+nav .menu-icon {
+  display: block;
+  position: absolute;
+  right: 10px;
+  top: 0px;
+  font-size: 22px;
+  transition: 0.4s ease-in-out;
+  opacity: 1;
+}
 
-  nav .nav-items li {
-    line-height: 35px;
-    margin: 30px 0;
-  }
+nav .menu-icon span {
+  display: block;
+  position: absolute;
+  right: 0px;
+  top: 26.5px;
+}
 
-  nav .nav-items li a {
-    font-size: 26px;
-    text-transform: uppercase;
-    font-weight: 900;
-    letter-spacing: 1px;
-    font-family: 'Poppins', sans-serif;
-  }
+nav .menu-icon span.hide {
+  display: none;
+  opacity: 0;
+}
 
-  nav .menu-icon {
-    display: block;
-    position: absolute;
-    right: 5px;
-    top: 0px;
-    font-size: 22px;
-    transition: 0.4s ease-in-out;
-    opacity: 1;
-  }
-
-  nav .menu-icon span {
-    display: block;
-    position: absolute;
-    right: 0px;
-    top: 28px;
-  }
-
-  nav .menu-icon span.hide {
-    display: none;
-    opacity: 0;
-  }
-
-  nav .cancel-icon.show {
-    display: block;
-    opacity: 1;
-    transition: 2s ease-in-out;
-  }
+nav .cancel-icon.show {
+  display: block;
+  opacity: 1;
+  transition: 2s ease-in-out;
 }
 
 .content {
@@ -177,22 +165,93 @@ nav .cancel-icon {
   width: 100vw;
   height: auto;
   min-height: 100vh;
-  background: #090909;
+  background: #000;
   padding: 15px;
   border-top-right-radius: 14px;
   border-top-left-radius: 14px;
-  transition: 0.2s ease-in-out;
+  transition: 0.5s ease-in-out;
   padding-top: 60px;
   z-index: 501;
 }
 
 .content.sticky {
   position: absolute;
-  background: #050505;
-  top: 20%;
+  background: #121417;
+  top: 25%;
   left: 0px;
   border-radius: 0px;
   margin-top: 80px;
+}
+
+a,
+img {
+  user-drag: none;
+  user-select: none;
+  -moz-user-select: none;
+  -webkit-user-drag: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+}
+
+.loader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1001;
+  background: #000;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: .5s ease-in-out;
+}
+
+.progress {
+  position: absolute;
+  bottom: 30%;
+  width: 100%;
+  max-width: 260px;
+  height: 16px;
+  border-radius: 8px;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.15);
+  padding: 4px;
+  justify-content: flex-start;
+  align-items: center;
+  display: flex;
+}
+
+.progress-bar {
+  animation: load 2.8s normal forwards;
+  box-shadow: 0 10px 40px -10px #fff;
+  background: #f3f3f3;
+  display: block;
+  height: 100%;
+  width: 0;
+  border-radius: 8px;
+}
+
+@keyframes load {
+  0% {
+    width: 0;
+  }
+
+  90% {
+    width: 82%;
+  }
+
+  100% {
+    width: 100%;
+  }
+}
+
+.loader.remove {
+  top: -100%;
+  left: 0;
+  position: fixed;
+  width: 100%;
+  height: 100%;
 }
 
 .bar {
@@ -200,7 +259,7 @@ nav .cancel-icon {
   top: 15px;
   left: 50%;
   transform: translateX(-50%);
-  background: #222;
+  background: #333;
   width: 50%;
   height: 3px;
   border-radius: 18px;
@@ -243,13 +302,11 @@ nav .cancel-icon {
   padding: 3px;
   transition: 0.3s ease-in-out;
   float: left;
-  width: 31%;
-  height: 260px;
-  padding: 0 3px;
-  margin-right: 20px;
-  margin-bottom: 20px;
+  width: 30%;
+  height: 256px;
+  margin-right: 22px;
+  margin-bottom: 22px;
   overflow: hidden;
-  
   box-shadow: 0 4px 40px 0 rgba(55, 55, 55, .2);
 }
 
@@ -283,7 +340,7 @@ nav .cancel-icon {
   transition: 0.4s ease-in-out;
 }
 
-.video:hover .thumb{
+.video:hover .thumb {
   transform: scale(1.09);
 }
 
